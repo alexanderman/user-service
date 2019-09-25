@@ -1,13 +1,12 @@
+/**
+ * DEPRECATE!!! NOT IN USE
+ */
+
+ console.log('******* api-router.js ********');
+
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user');
-
-
-// GET route for reading data
-// router.get('/', function (req, res, next) {
-//   return res.sendFile(path.join(__dirname + '/templateLogReg/index.html'));
-// });
-
+var User = require('../models/User');
 
 //POST route for updating data
 router.post('/', function (req, res, next) {

@@ -78,6 +78,8 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
+app.use('/api', require('./routes/api'));
+
 /**
  * Start Express server.
  */

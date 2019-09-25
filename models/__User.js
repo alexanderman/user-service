@@ -1,39 +1,34 @@
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    email: { 
-        type: String, 
-        unique: true 
-    },
-    password: String,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-    emailVerificationToken: String,
-    emailVerified: Boolean,
+  email: { type: String, unique: true },
+  password: String,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
+  emailVerificationToken: String,
+  emailVerified: Boolean,
 
-    externalId: String,
-    provider: {
-        default: 'local',
-        type: String,
-        enum: ['google', 'local', 'facebook']
-    },
-    externalProfile: Object
+  snapchat: String,
+  facebook: String,
+  twitter: String,
+  google: String,
+  github: String,
+  instagram: String,
+  linkedin: String,
+  steam: String,
+  quickbooks: String,
+  tokens: Array,
 
-}, { 
-    timestamps: true 
-});
-
-/** returns promise */
-function hashPassword(password) {
-    return bcrypt.genSalt(10)
-    .then(salt => {
-        return bcrypt.hash(password, salt);
-    })
-    .then(hash => {
-        return hash;
-    });
-}
+  profile: {
+    name: String,
+    gender: String,
+    location: String,
+    website: String,
+    picture: String
+  }
+}, { timestamps: true });
 
 /**
  * Password hash middleware.
